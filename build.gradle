@@ -19,9 +19,25 @@ configurations {
 
 repositories {
     mavenCentral()
+    maven {
+//        credentials {
+//            username 'admin'
+//            password 'admin'
+//        }
+        allowInsecureProtocol = true
+//        url "localhost:8081"
+//        url "http://localhost:8081/nexus/content/repositories/maven-public"
+//        url "http://localhost:8081/nexus/content/groups/public"
+
+//        url "http://localhost:8081/repository/maven-public"
+        url "http://nexus:8081/nexus/content/groups/public"
+
+    }
 }
 
 dependencies {
+    implementation 'org.maks:DTOLib:0.0.1'
+
     implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.flywaydb:flyway-core'
@@ -38,6 +54,7 @@ dependencies {
     testImplementation 'org.testcontainers:postgresql'
     testImplementation 'org.testcontainers:r2dbc'
 }
+
 
 tasks.named('test') {
     useJUnitPlatform()
