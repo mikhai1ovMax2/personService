@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: local
+  config:
+    import: optional:file:.env[.properties]
+  r2dbc:
+    url: ${PROVIDER_R2DBC_URL}
+    username: ${PROVIDER_R2DBC_USERNAME}
+    password: ${PROVIDER_R2DBC_PASSWORD}
+  data:
+    r2dbc:
+      repositories:
+        enabled: true
+  flyway:
+    url: ${PROVIDER_JDBC_URL}
+    user: ${PROVIDER_JDBC_USERNAME}
+    password: ${PROVIDER_JDBC_PASSWORD}
+    locations: db/migration
+    enabled: true
+logging:
+  level:
+    web: debug
+    sql: debug
