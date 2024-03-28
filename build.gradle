@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.3'
     id 'io.spring.dependency-management' version '1.1.4'
+    id 'maven-publish'
+
 }
 
 group = 'org.example'
@@ -18,25 +20,21 @@ configurations {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
-    maven {
+//    maven {
+//        name 'nexus'
+//        allowInsecureProtocol = true
+//        url "http://localhost:8081/repository/test/"
 //        credentials {
-//            username 'admin'
-//            password 'admin'
+//            username "admin"
+//            password "admin"
 //        }
-        allowInsecureProtocol = true
-//        url "localhost:8081"
-//        url "http://localhost:8081/nexus/content/repositories/maven-public"
-//        url "http://localhost:8081/nexus/content/groups/public"
-
-//        url "http://localhost:8081/repository/maven-public"
-        url "http://nexus:8081/nexus/content/groups/public"
-
-    }
+//    }
 }
 
 dependencies {
-    implementation 'org.maks:DTOLib:0.0.1'
+    implementation 'org.maks:lib:1.1.1'
 
     implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
@@ -47,6 +45,13 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     runtimeOnly 'org.postgresql:r2dbc-postgresql'
     annotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    implementation 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 //    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
     testImplementation 'io.projectreactor:reactor-test'

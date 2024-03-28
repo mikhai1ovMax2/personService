@@ -1,14 +1,26 @@
 package org.example.personservice.model;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Table(schema = "person", name = "users")
 public class User {
+
+    @Id
+    @Column("id")
+    private UUID id;
+
+    @Column("created")
+    private LocalDateTime createdAt;
+
+    @Column("updated")
+    private LocalDateTime updatedAt;
 
     @Column("secret_key")
     private String secret_key;
@@ -35,5 +47,5 @@ public class User {
     private boolean filled;
 
     @Column("address_id")
-    private Long address_id;
+    private UUID address_id;
 }

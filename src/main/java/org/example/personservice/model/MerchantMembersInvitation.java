@@ -1,14 +1,23 @@
 package org.example.personservice.model;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Table(schema = "person", name = "merchant_members_invitations")
-public class MerchantMembersInvitation extends BaseModel{
+public class MerchantMembersInvitation {
+
+    @Id
+    @Column("id")
+    private UUID id;
+
+    @Column("created")
+    private LocalDateTime createdAt;
 
     @Column("expires")
     private LocalDateTime expires;
@@ -26,5 +35,5 @@ public class MerchantMembersInvitation extends BaseModel{
     private String status;
 
     @Column("merchant_id")
-    private Long merchant_id;
+    private UUID merchant_id;
 }

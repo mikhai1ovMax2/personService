@@ -1,6 +1,7 @@
 package org.example.personservice.model;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -9,7 +10,17 @@ import java.time.LocalDateTime;
 
 @Data
 @Table(schema = "person", name = "countries")
-public class Country extends BaseModel{
+public class Country{
+
+    @Id
+    @Column("id")
+    private Long id;
+
+    @Column("created")
+    private LocalDateTime createdAt;
+
+    @Column("updated")
+    private LocalDateTime updatedAt;
 
     @Column("name")
     private String name;

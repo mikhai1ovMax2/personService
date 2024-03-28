@@ -11,7 +11,7 @@ public class BaseModel {
 
     @Id
     @Column("id")
-    private Long id;
+    private String id;
 
     @Column("created")
     private LocalDateTime createdAt;

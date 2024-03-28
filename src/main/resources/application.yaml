@@ -1,4 +1,5 @@
 spring:
+
   profiles:
     active: local
   config:
@@ -21,3 +22,5 @@ logging:
   level:
     web: debug
     sql: debug
+server:
+  port: 8082
