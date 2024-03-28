@@ -17,7 +17,6 @@ public record ProfileHistoryService(ProfileHistoryRepository profileHistoryRepos
 
 
     public Mono<ProfileHistoryDTO> save(ProfileHistoryDTO profileHistoryDTO){
-        profileHistoryDTO.setUpdatedAt(LocalDateTime.now());
         profileHistoryDTO.setCreatedAt(LocalDateTime.now());
         return profileHistoryRepository.save(profileHistoryMapper.convert(profileHistoryDTO))
                 .map(profileHistoryMapper::convert);
